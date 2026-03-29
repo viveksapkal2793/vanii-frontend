@@ -7,7 +7,7 @@ interface GetUserResponse {
   user: UserDetails;
 }
 
-const URL = "api/v1/user/get-user";
+const URL = "/api/v1/user/get-user";
 
 export async function GetUser({
   axios,

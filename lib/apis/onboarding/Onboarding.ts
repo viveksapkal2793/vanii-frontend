@@ -3,7 +3,7 @@ import { PostApiInput } from "@/types/api";
 import { PostApi } from "../PostApi";
 import { z } from "zod";
 
-const URL = "api/v1/user/post-onboarding";
+const URL = "/api/v1/user/post-onboarding";
 
 export async function PostOnboarding({
   axios,

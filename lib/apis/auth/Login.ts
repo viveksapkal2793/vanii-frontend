@@ -9,7 +9,7 @@ interface LoginData {
 
 type LoginResponse = Omit<UserDetails, "password">;
 
-const URL = "api/v1/user/login";
+const URL = "/api/v1/user/login";
 
 export async function PostLogin({
   axios,

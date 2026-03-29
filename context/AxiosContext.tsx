@@ -2,10 +2,20 @@
 
 import axios, { AxiosInstance } from "axios";
 import { createContext, ReactNode } from "react";
-import 'dotenv/config'
+
+const normalizeBackendUrl = (rawUrl?: string) => {
+  const fallback = "https://vanii-backend.onrender.com/auth";
+  const value = (rawUrl || fallback).trim();
+  const withoutTrailingSlash = value.replace(/\/+$/, "");
+
+  // Backend routes are mounted under /auth in deployed environments.
+  return withoutTrailingSlash.endsWith("/auth")
+    ? withoutTrailingSlash
+    : `${withoutTrailingSlash}/auth`;
+};
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+  baseURL: normalizeBackendUrl(process.env.NEXT_PUBLIC_BACKEND_URL),
   withCredentials: true,
 });
 
