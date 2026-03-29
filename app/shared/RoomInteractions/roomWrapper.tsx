@@ -72,7 +72,7 @@ const RoomWrapper: React.FC<roomWrapperProps> = ({ showChat,data, studyRoom=fals
       setLivekitConfig((prevValues) => {
         return {
           ...prevValues,
-          serverUrl: studyRoom ? "wss://vanii-490yrzvm.livekit.cloud" : "wss://vanii-wat801kw.livekit.cloud",
+          serverUrl: "wss://vanii-wat801kw.livekit.cloud",
           token: roomToken,
           isConnected: true,
           sessionId: sessionId || undefined,

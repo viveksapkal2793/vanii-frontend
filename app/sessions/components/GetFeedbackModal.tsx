@@ -131,7 +131,7 @@ const GetFeedbackModal: React.FC<GetFeedbackModalProps> = ({
               <MessageSquare className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
               <h3 className="text-lg font-semibold mb-2">Get AI Feedback</h3>
               <p className="text-muted-foreground mb-4">
-                Let our AI analyze your conversation with Vanii and provide personalized feedback
+                Let our AI analyze your conversation with Vartalaap and provide personalized feedback
                 on your language learning progress.
               </p>
               <Button onClick={handleGenerateFeedback} className="flex items-center gap-2">

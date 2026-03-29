@@ -301,7 +301,7 @@ const SessionsPage = () => {
             <MessageCircle className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-4 text-muted-foreground" />
             <h3 className="text-base sm:text-lg font-semibold mb-2">No sessions yet</h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-4 px-4">
-              Start your first conversation with Vanii to see your sessions here.
+              Start your first conversation with Vartalaap to see your sessions here.
             </p>
             <Button onClick={() => router.push('/learn')} className="w-full sm:w-auto">
               Start Learning

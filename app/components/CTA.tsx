@@ -13,13 +13,13 @@ const CTA: FC = () => {
           style={{ backgroundImage: "url('/images/home/cta.webp')" }}
         >
           <h2 className="mb-8 font-satoshi-bold text-card text-4xl">
-            Join the Vanii Community and Learn!
+            Join the Vartalaap Community and Learn!
           </h2>
           <Button
         variant="default"
             className="bg-primary text-primary-50 hover:bg-primary-700"
             onClick={() =>
-              window.open("https://chat.whatsapp.com/L9i9d2ody5DCdb8Z6PJHT4")
+              window.open("https://chat.whatsapp.com/BjP5YAWgQ53Js1eGSsmsNV")
             }
           >
             <span className="text-white text-lg">Join Community</span>

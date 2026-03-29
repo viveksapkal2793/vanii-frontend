@@ -152,7 +152,7 @@ const Room: FC<RoomProps> = ({ showChat }) => {
 
               {/* Assistant Info */}
               <div className="text-center space-y-2">
-                <h1 className="text-2xl font-bold text-gray-800">Vanii</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Vartalaap</h1>
                 {!showChat &&  <h2 className="text-gray-600">
                   {currentTime &&
                     (currentTime > 60
@@ -184,7 +184,7 @@ const Room: FC<RoomProps> = ({ showChat }) => {
               ) : (
                 <div className="flex items-center justify-center h-full text-black">
                   <p className="text-lg font-medium">
-                    Unable to connect to the Vanii :(
+                    Unable to connect to the Vartalaap :(
                   </p>
                 </div>
               )}

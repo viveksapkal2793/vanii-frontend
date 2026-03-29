@@ -35,7 +35,7 @@ export const sections: Section[] = [
       content: [
         {
           heading: "Service Description",
-          text: "Vanii.AI provides an AI-powered voice chatbot that helps users improve their spoken English fluency through real-time, seamless conversations.",
+          text: "Vartalaap.AI provides an AI-powered voice chatbot that helps users improve their spoken English fluency through real-time, seamless conversations.",
         },
         {
           heading: "User Eligibility",
@@ -51,7 +51,7 @@ export const sections: Section[] = [
         },
         {
           heading: "Limitation of Liability",
-          text: "Vanii.AI is not liable for any technical issues, temporary unavailability, or other problems beyond our control.",
+          text: "Vartalaap.AI is not liable for any technical issues, temporary unavailability, or other problems beyond our control.",
         },
       ],
     },
@@ -60,7 +60,7 @@ export const sections: Section[] = [
       content: [
         {
           heading: "No Refund Policy",
-          text: "At this time, Vanii.AI does not offer refunds for subscriptions or services.",
+          text: "At this time, Vartalaap.AI does not offer refunds for subscriptions or services.",
         },
         {
           heading: "Payment Failures",

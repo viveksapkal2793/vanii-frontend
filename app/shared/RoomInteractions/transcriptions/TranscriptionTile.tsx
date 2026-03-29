@@ -63,7 +63,7 @@ export function TranscriptionTile({
       let name = msg.from?.name;
       if (!name) {
         if (isAgent) {
-          name = "Vanii";
+          name = "Vartalaap";
         } else if (isSelf) {
           name = "You";
         } else {
@@ -111,7 +111,7 @@ function segmentToChatMessage(
 ): ChatMessageType {
   const msg: ChatMessageType = {
     message: s.final ? s.text : `${s.text} ...`,
-    name: participant instanceof LocalParticipant ? "You" : "Vanii",
+    name: participant instanceof LocalParticipant ? "You" : "Vartalaap",
     isSelf: participant instanceof LocalParticipant,
     timestamp: existingMessage?.timestamp ?? Date.now(),
   };

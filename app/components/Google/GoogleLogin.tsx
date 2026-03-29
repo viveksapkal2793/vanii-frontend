@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 const GoogleLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const router = useRouter()
+  // const router = useRouter()
 
   const handleGoogleLogin = async () => {
     try {

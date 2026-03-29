@@ -42,7 +42,7 @@ const Hero: FC = () => {
                   Automated Processes
                 </h2>
                 <p className="text-md">
-                  At Vanii, our mission is to make language learning accessible,
+                  At Vartalaap, our mission is to make language learning accessible,
                   personalized, practical and enjoyable for everyone, regardless
                   of their background or location.
                 </p>

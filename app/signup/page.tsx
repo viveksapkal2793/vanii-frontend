@@ -30,8 +30,6 @@ import { PostRegister, RegisterRequestData } from "@/lib/apis/otp/SendOtp";
 
 import useAxiosContext from "@/hooks/custom/useAxiosContext";
 import { countryCodesObject } from "../components/forms/CountryCode";
-import { PostResendOtp } from "@/lib/apis/otp/ResendOtp";
-import { PostVerifyOtp } from "@/lib/apis/otp/VerifyOtp";
 import PhoneNumberInput from "../components/forms/PhoneNumberInput";
 import PasswordVerify from "@/lib/form/PasswordVerify";
 import { GetCountry } from "@/lib/apis/util/GetCountry";
@@ -58,9 +56,6 @@ const Signup: FC = () => {
   const axios = useAxiosContext();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [displayOtp, setDisplayOtp] = useState(false);
-  const [orderId, setOrderId] = useState("");
-  const [otp, setOtp] = useState("");
   const [countryCode, setCountryCode] = useState("+91");
 
   const form = useForm<SignupFormData>({
@@ -85,18 +80,25 @@ const Signup: FC = () => {
     });
   }, [axios]);
 
-  const handleOtpResend = async () => {
+  const onSubmit = async (values: SignupFormData) => {
     try {
       setIsLoading(true);
-      await PostResendOtp({
+
+      const registerData: RegisterRequestData = {
+        fullname: values.fullname,
+        password: values.password,
+        phone: `${countryCode}${values.phone}`,
+      };
+
+      await PostRegister({
         axios,
-        data: { orderId },
-        onSuccess: (response) => {
-          setOrderId(response.data.orderId);
+        data: registerData,
+        onSuccess: () => {
           toast({
             title: "Success",
-            description: "OTP resent successfully",
+            description: "Signup successful. Please provide your preferences.",
           });
+          router.push("/onboarding");
         },
         onError: (error) => {
           toast({
@@ -106,69 +108,6 @@ const Signup: FC = () => {
           });
         },
       });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const onSubmit = async (values: SignupFormData) => {
-    try {
-      setIsLoading(true);
-
-      if (displayOtp) {
-        await PostVerifyOtp({
-          axios,
-          data: {
-            OTP: otp,
-            phone: `${countryCode}${values.phone}`,
-            orderId,
-          },
-          onSuccess: (response) => {
-            if (response.data.isOTPVerified) {
-              toast({
-                title: "Success",
-                description:
-                  "Signup Successful. Please provide your preferences.",
-              });
-              router.push("/onboarding");
-            }
-          },
-          onError: (error) => {
-
-            toast({
-              variant: "destructive",
-              title: "Error",
-              description: error.message || "An error occurred",
-            });
-          },
-        });
-      } else {
-        const registerData: RegisterRequestData = {
-          fullname: values.fullname,
-          password: values.password,
-          phone: `${countryCode}${values.phone}`,
-        };
-
-        await PostRegister({
-          axios,
-          data: registerData,
-          onSuccess: (response) => {
-            setOrderId(response.data.orderId);
-            setDisplayOtp(true);
-            toast({
-              title: "Success",
-              description: "OTP sent successfully",
-            });
-          },
-          onError: (error) => {
-            toast({
-              variant: "destructive",
-              title: "Error",
-              description: error.message
-            });
-          },
-        });
-      }
     } finally {
       setIsLoading(false);
     }
@@ -190,7 +129,7 @@ const Signup: FC = () => {
         <Card className="w-full max-w-md shadow-none border-none">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-xl sm:text-2xl">
-              Welcome to Vanii!
+              Welcome to Vartalaap!
             </CardTitle>
             <CardDescription className="text-sm sm:text-base">
               Speak Fluently, Connect Instantly
@@ -253,38 +192,6 @@ const Signup: FC = () => {
                   )}
                 />
 
-                {displayOtp && (
-                  <div className="space-y-4">
-                    <FormItem>
-                      <FormLabel>Enter OTP</FormLabel>
-                      <div className="flex flex-col sm:flex-row gap-2">
-                        <FormControl>
-                          <Input
-                            placeholder="Enter OTP"
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            className="flex-1"
-                          />
-                        </FormControl>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={handleOtpResend}
-                          disabled={isLoading}
-                          className="w-full sm:w-auto"
-                          size="sm"
-                        >
-                          {isLoading ? (
-                            <Loader2 className="h-4 w-4 animate-spin" />
-                          ) : (
-                            "Resend OTP"
-                          )}
-                        </Button>
-                      </div>
-                    </FormItem>
-                  </div>
-                )}
-
                 <PasswordVerify
                   password={form.watch("password")}
                   verifyPassword={form.watch("verifyPassword")}
@@ -304,7 +211,7 @@ const Signup: FC = () => {
                     {isLoading && (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     )}
-                    {displayOtp ? "Verify OTP" : "Sign Up"}
+                    Sign Up
                   </Button>
 
                   <div className="text-center">

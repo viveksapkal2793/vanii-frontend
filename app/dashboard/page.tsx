@@ -33,7 +33,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-center mb-4">
             <CheckCircle className="h-12 w-12 text-green-500 mr-3" />
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Welcome to Vanii!
+              Welcome to Vartalaap!
             </h1>
           </div>
           <p className="text-lg text-gray-600">
@@ -107,7 +107,7 @@ const Dashboard = () => {
                 🎉 Google Authentication Successful!
               </h3>
               <p className="text-gray-600 mb-4">
-                Your Google account has been successfully linked to Vanii. 
+                Your Google account has been successfully linked to Vartalaap. 
                 You can now enjoy all the features of our platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

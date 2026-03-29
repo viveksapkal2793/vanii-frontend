@@ -33,7 +33,6 @@ import LearnSubjectButton from "./LearnSubjectButton";
 const NAVIGATION_ITEMS = [
   { label: "About Us", href: "/#about-us" },
   { label: "Features", href: "/#features" },
-  { label: "Blogs", href: "/blogs" },
   { label: "Pricing", href: "/pricing" },
 ] as const;
 
@@ -232,24 +231,35 @@ export function Navbar() {
         isSticky && "sticky top-0 z-50 border-b"
       )}
     >
-      <div className="container flex items-center justify-between  max-w-screen-xl mx-auto">
-        <Link href="/" className="flex-shrink-0">
-          <Image
-            src="/images/icons/logo.png"
-            alt="Logo"
-            width={32} // Since h-8 is 32px
-            height={32} // Maintaining aspect ratio
-            priority // Since it's a logo above the fold
-            className="w-auto h-8 object-contain"
-          />
-        </Link>
-
+      <div className="container flex items-center justify-between max-w-screen-xl mx-auto gap-4">
         {isMobile ? (
-          <MobileNavigation />
+          <>
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/icons/logo.svg"
+                alt="Logo"
+                width={36}
+                height={36}
+                priority
+                className="w-auto h-9 object-contain"
+              />
+            </Link>
+            <MobileNavigation />
+          </>
         ) : (
           <>
-            <DesktopNavigation />
             <AuthButtons />
+            <DesktopNavigation />
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/icons/logo.svg"
+                alt="Logo"
+                width={36}
+                height={36}
+                priority
+                className="w-auto h-9 object-contain"
+              />
+            </Link>
           </>
         )}
       </div>

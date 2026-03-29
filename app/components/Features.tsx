@@ -8,25 +8,25 @@ const features = [
     icon: "/images/icons/Curate.svg",
     title: "Hyper-Realistic Language Teacher",
     description:
-      "Our platform uses advanced AI to provide personalized learning experiences. This AI teacher evolves to meet your needs, helping you communicate effectively.",
+      "Experience an AI tutor that feels natural and adapts to your progress, so each session stays relevant to your communication goals.",
   },
   {
     icon: "/images/icons/Personalize.svg",
     title: "Personalized Feedback",
     description:
-      "Get instant feedback to improve. Add new words to your vocabulary, make fewer grammatical errors, and speak with more confidence.",
+      "Receive quick, actionable feedback that helps you expand vocabulary, reduce grammar mistakes, and speak with greater confidence.",
   },
   {
     icon: "/images/icons/Culture.svg",
     title: "Interactive Sessions",
     description:
-      "Engage in interactive learning sessions for dynamic education. Gain confidence through real-world scenarios and practice activities.",
+      "Learn through interactive conversations and realistic scenarios that make practice engaging, practical, and confidence-building.",
   },
   {
     icon: "/images/icons/Community.svg",
     title: "Community Support",
     description:
-      "Join a global learning community. Share experiences and tips. Complement your AI teacher with peer support and cultural exchange.",
+      "Connect with a supportive learner community to exchange tips, share progress, and enrich your learning with peer insights.",
   },
 ];
 
@@ -35,15 +35,15 @@ export default function FeaturesSection() {
     <section id="features" className="bg-primary-50 py-20">
       <div className="max-w-screen-xl mx-auto max-md:px-8 md:px-24">
         <div className="grid max-md:grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <h2 className="font-satoshi-medium text-3xl text-primary-700 max-w-xl max-md:mb-1 font-semibold">
-            Bridging Language Barriers, Opening Doors
+          <h2 className="font-satoshi-medium text-3xl text-primary-700 max-w-xl max-md:mb-1 font-semibold md:order-2">
+            Breaking Language Barriers, Creating Opportunities
           </h2>
-          <p className="text-md">
-            Our vision is to bridge the language gap and empower individuals
-            with the skills they need to succeed in a globalized world. We
-            believe that language should never be a barrier to opportunities and
-            growth. Connecting across borders and bringing together cultures, we
-            aim to make language learning affordable, accessible and efficient.
+          <p className="text-md md:order-1">
+            We envision a world where language is a strength, not a limitation.
+            By combining AI guidance with practical conversation practice, we
+            help learners build the skills needed to thrive in a connected,
+            global environment. Our goal is to keep language learning
+            accessible, effective, and meaningful for everyone.
           </p>
         </div>
 

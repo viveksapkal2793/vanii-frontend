@@ -31,14 +31,14 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
       <select
         value={countryCode}
         onChange={handleCountryCodeChange}
-        className="w-20 px-2 py-2 border border-orange-300 rounded-l-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        className="w-20 px-2 py-2 border border-blue-300 rounded-l-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <CountryCode />
       </select>
       <input
         type="number"
         placeholder="Phone number"
-        className="flex-1 px-3 py-2 border-t border-b border-r border-orange-300 rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+        className="flex-1 px-3 py-2 border-t border-b border-r border-blue-300 rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={phoneNumber}
         onChange={handlePhoneChange}
       />

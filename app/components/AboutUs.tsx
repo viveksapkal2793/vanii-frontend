@@ -7,24 +7,24 @@ const AboutSection = () => {
   return (
     <section id="about-us" className="py-24 bg-card">
       <div className="max-w-screen-xl mx-auto max-md:px-8 md:px-24 grid max-md:grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <Card className="border-none shadow-none">
+        <Card className="border-none shadow-none md:order-2">
           <CardContent className="p-0">
             <h2 className="font-satoshi-medium text-4xl text-primary- font-bold">
-              What We Are?
+              Who We Are
             </h2>
             <p className="mt-12 text-xl tracking-wider">
-              An AI-based language learning platform designed to be your
-              personal assistant in mastering a new language. Preparing for
-              competitive exams like TOEFL, IELTS etc.? Want to improve your
-              professional soft skills? Or maybe you just want to communicate
-              better? Look no further. Our innovative AI-powered tool ensures
-              that you receive the best learning experience tailored to your
-              individual needs.
+              Vartalaap is an AI-powered language learning platform built to
+              guide you toward confident communication. Whether you are
+              preparing for exams like IELTS or TOEFL, sharpening workplace
+              communication, or improving everyday speaking, the platform adapts
+              to your goals. Our assistant delivers practical practice,
+              personalized guidance, and a learning journey designed around your
+              pace.
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-none">
+        <Card className="border-none shadow-none md:order-1">
           <CardContent className="p-0">
             <div className="img-transition rounded-medium min-h-[29rem] relative">
               <Image
