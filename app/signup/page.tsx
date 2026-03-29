@@ -27,8 +27,10 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
 import { PostRegister, RegisterRequestData } from "@/lib/apis/otp/SendOtp";
+import { PostLogin } from "@/lib/apis/auth/Login";
 
 import useAxiosContext from "@/hooks/custom/useAxiosContext";
+import useAuthContext from "@/hooks/custom/useAuthContext";
 import { countryCodesObject } from "../components/forms/CountryCode";
 import PhoneNumberInput from "../components/forms/PhoneNumberInput";
 import PasswordVerify from "@/lib/form/PasswordVerify";
@@ -54,6 +56,7 @@ const Signup: FC = () => {
   const router = useRouter();
   const { toast } = useToast();
   const axios = useAxiosContext();
+  const auth = useAuthContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [countryCode, setCountryCode] = useState("+91");
@@ -93,12 +96,36 @@ const Signup: FC = () => {
       await PostRegister({
         axios,
         data: registerData,
-        onSuccess: () => {
-          toast({
-            title: "Success",
-            description: "Signup successful. Please provide your preferences.",
+        onSuccess: async () => {
+          await PostLogin({
+            axios,
+            data: {
+              phone: `${countryCode}${values.phone}`,
+              password: values.password,
+            },
+            onSuccess: (loginResponse) => {
+              auth?.setConfig({
+                loggedIn: true,
+                id: loginResponse.data._id,
+                email: loginResponse.data.email,
+                voice: loginResponse.data.voice,
+              });
+
+              toast({
+                title: "Success",
+                description: "Signup successful. Please provide your preferences.",
+              });
+              router.push("/onboarding");
+            },
+            onError: (error) => {
+              toast({
+                variant: "destructive",
+                title: "Error",
+                description: error.message || "Signup succeeded but login failed. Please sign in manually.",
+              });
+              router.push("/login");
+            },
           });
-          router.push("/onboarding");
         },
         onError: (error) => {
           toast({
