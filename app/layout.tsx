@@ -48,11 +48,6 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PCHH5RVH');
           `}
         </Script>
-        <Script src="https://apis.google.com/js/platform.js" strategy="afterInteractive" />
-        <meta
-          name="google-signin-client_id"
-          content="680850558467-85a31vs3e17dl09qi5jg1abf3i2tu9sr.apps.googleusercontent.com"
-        />
 
       </head>
       <body

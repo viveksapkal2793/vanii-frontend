@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import {
   Card,
@@ -28,8 +28,6 @@ import { PostLogin } from "@/lib/apis/auth/Login";
 import PhoneNumberInput from "../../components/forms/PhoneNumberInput";
 import { countryCodesObject } from "../../components/forms/CountryCode";
 import { GetCountry } from "@/lib/apis/util/GetCountry";
-import GoogleWrapper from "../../components/Google/GoogleWrapper";
-import GoogleLogin from "../../components/Google/GoogleLogin";
 
 const formSchema = z.object({
   phone: z.string().min(1, "Phone number is required"),
@@ -38,7 +36,6 @@ const formSchema = z.object({
 
 const LoginForm: FC = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const auth = useAuthContext();
   const axios = useAxiosContext();
   const { toast } = useToast();
@@ -52,30 +49,6 @@ const LoginForm: FC = () => {
   });
 
   const [countryCode, setCountryCode] = useState("+91");
-
-  useEffect(() => {
-    const error = searchParams.get('error');
-    if (error) {
-      let errorMessage = "Authentication failed. Please try again.";
-      switch (error) {
-        case 'auth_failed':
-          errorMessage = "Google authentication failed. Please try again.";
-          break;
-        case 'no_user':
-          errorMessage = "No user account found. Please sign up first.";
-          break;
-        case 'login_failed':
-          errorMessage = "Failed to log you in. Please try again.";
-          break;
-      }
-      toast({
-        variant: "destructive",
-        title: "Authentication Error",
-        description: errorMessage,
-      });
-      router.replace('/login');
-    }
-  }, [searchParams, toast, router]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -157,23 +130,6 @@ const LoginForm: FC = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <GoogleWrapper>
-          <div className="mb-6">
-            <GoogleLogin />
-          </div>
-        </GoogleWrapper>
-        
-        <div className="relative mb-6">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
-            </span>
-          </div>
-        </div>
-        
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
