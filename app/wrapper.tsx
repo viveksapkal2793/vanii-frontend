@@ -19,7 +19,6 @@ const Wrapper: React.FC<wrapperProps> = ({ children }) => {
     "/",
     "/login",
     "/signup",
-    "/forgotpassword",
     "/pricing",
     "/terms",
     "/blogs",

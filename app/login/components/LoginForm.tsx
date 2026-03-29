@@ -172,20 +172,13 @@ const LoginForm: FC = () => {
               <Button type="submit" className="w-full">
                 Sign in
               </Button>
-              <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2">
+              <div className="flex justify-center items-center">
                 <Button
                   variant="link"
                   className="h-auto p-0 text-primary text-sm"
                   onClick={() => router.push("/signup")}
                 >
                   Create account
-                </Button>
-                <Button
-                  variant="link"
-                  className="h-auto p-0 text-primary text-sm"
-                  onClick={() => router.push("/forgotpassword")}
-                >
-                  Forgot password
                 </Button>
               </div>
             </div>
