@@ -70,25 +70,38 @@ export function Navbar() {
   }, [handleScroll, handleResize]);
 
   const handleLogout = useCallback(() => {
+    const clearLocalSession = () => {
+      auth.setConfig({
+        loggedIn: false,
+        id: "",
+        email: "",
+        voice: "",
+      });
+      router.push("/");
+    };
+
     Logout({
       axios,
       onSuccess: () => {
-        auth.setConfig({
-          loggedIn: false,
-          id: "",
-          email: "",
-          voice: "",
-        });
+        clearLocalSession();
         toast({
           title: "Success",
           description: "Logged out successfully",
         });
-        router.push("/");
       },
-      onError: () => {
+      onError: (error) => {
+        if (error.statusCode === 401 || error.statusCode === 403) {
+          clearLocalSession();
+          toast({
+            title: "Logged out",
+            description: "Session already expired.",
+          });
+          return;
+        }
+
         toast({
           title: "Error",
-          description: "Failed to logout",
+          description: error.message || "Failed to logout",
           variant: "destructive",
         });
       },
